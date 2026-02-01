@@ -1,0 +1,93 @@
+<!-- Base -->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="index,follow" />
+<meta name="rating" content="general" />
+<meta name="theme-color" content="#0D3B66" />
+
+
+<!-- SEO -->
+<title>{{ title }}</title>
+
+<!-- Ajusta o canonical para o domínio real quando existir -->
+<link rel="canonical" href="https://mynodejs.host/pigsa" />
+
+<meta
+  name="description"
+  content="PIGSA é uma plataforma integrada de gestão académica para universidades, com módulos de matrículas, pagamentos, notas e notificações. Arquitetura moderna baseada em microserviços, APIs e eventos assíncronos."
+/>
+
+<meta
+  name="keywords"
+  content="PIGSA, gestão académica, matrículas, propinas, pagamentos, notas, notificações, universidade, Uni-CV, microserviços, API REST, integração de sistemas, RabbitMQ, eventos assíncronos"
+/>
+
+<meta name="author" content="PIGSA — Universidade de Cabo Verde" />
+<meta name="copyright" content="PIGSA" />
+
+<!-- Open Graph (Facebook/WhatsApp) -->
+<meta property="og:site_name" content="PIGSA" />
+<meta property="og:title" content="PIGSA — Plataforma Integrada de Gestão de Serviços Académicos" />
+<meta
+  property="og:description"
+  content="Gestão académica integrada: matrículas, pagamentos, notas e notificações, com integração por APIs e eventos assíncronos."
+/>
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://mynodejs.host/pigsa" />
+
+<!-- Para Cabo Verde, faz mais sentido pt_PT ou pt_CV; como pt_CV não é sempre suportado, pt_PT é seguro -->
+<meta property="og:locale" content="pt_PT" />
+
+<!-- Substitui pela imagem OG da PIGSA (ideal: 1200x630) -->
+<meta property="og:image" content="img/main-logo-pigsa.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="PIGSA — Plataforma Integrada de Gestão Académica" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="PIGSA — Gestão Académica Integrada" />
+<meta
+  name="twitter:description"
+  content="Matrículas, pagamentos, notas e notificações integradas, com microserviços e eventos assíncronos."
+/>
+<meta name="twitter:image" content="img/main-logo-pigsa.png" />
+
+<!-- Icons / PWA -->
+<link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png" />
+<link rel="manifest" href="site.webmanifest" />
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+<link
+  rel="preload"
+  as="style"
+  href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+/>
+
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+  media="print"
+  onload="this.media='all'"
+/>
+
+<noscript>
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+  />
+</noscript>
+
+<!-- Preload da imagem principal (ajusta para o hero real da PIGSA) -->
+<link
+  rel="preload"
+  as="image"
+  href="img/pigsa_hero.png?width=640&as=webp"
+  imagesrcset="img/pigsa_hero.png?width=640&as=webp"
+  fetchpriority="high"
+/>

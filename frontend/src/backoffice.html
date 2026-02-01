@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+  <head>
+
+    <include
+      src="src/components/head-metadata.html"
+      locals='{
+        "title": "PIGSA — Back Office"
+      }'
+    ></include>
+
+  </head>
+  <body class="back-office">
+
+    <!-- <include
+      src="src/components/main-header.html"
+      locals='{
+        "inicio": "#inicio",
+        "rifas": "#rifas",
+        "vencedores": "#vencedores",
+        "parceiros": "#parceiros",
+        "sobre": "#sobre",
+        "contacto": "#contacto",
+        "active":"inicio"
+      }'
+    >
+    </include> -->
+    <a href="index.html" class="link-return">Voltar para a página principal</a>
+    <main class="main-content">
+      <div class="container-title">
+        <h1 class="app-title">Plataforma Integrada De Gestão Academica</h1>
+      </div>
+      <div class="container-buttons">
+        <button type="button" class="btn btn-action active" data-tab-id="curriculares">
+            Unidades Curiculares
+        </button>
+        <button type="button" class="btn btn-action" data-tab-id="cursos">
+            Cursos
+        </button>
+        <button type="button" class="btn btn-action" data-tab-id="matriculas">
+            Matriculas
+        </button>
+        <button type="button" class="btn btn-action" data-tab-id="notas">
+            Notas
+        </button>
+      </div>
+      <div class="container-tab">
+        <div class="tab-item" data-tab="curriculares">
+          <form action="" class="form-create-curriculares">
+            <input type="hidden" class="form-control" name="id-uc" id="id-uc">
+            <div class="form-group-inline">
+              <div class="form-group">
+                  <label for="nome-curriculares">Nome</label>
+                  <input type="text" class="form-control" name="nome-curriculares" id="nome-curriculares">
+                  <small class="feedback-error d-none" data-error-feedback="nome-curriculares"></small>
+                  <small class="feedback-error d-none" data-error-feedback="id-uc"></small>
+              </div>
+              <div class="form-group">
+                  <label for="faculdade">Faculdade/Escola</label>
+                  <input type="text" class="form-control" name="faculdade" id="faculdade">
+                  <small class="feedback-error d-none" data-error-feedback="faculdade"></small>
+              </div>
+            </div>
+            <div class="container-create-btn">
+              <button type="reset" class="btn btn-cancel">Cancelar</button>
+              <button type="button" class="btn btn-create">Criar</button>
+              <button type="button" class="btn btn-update d-none">Atualizar</button>
+            </div>
+          </form>
+          <div class="container-data list-curriculares">
+            <div class="loader-container d-none">
+              <div class="lds-ring">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+            </div>
+            <div class="curriculares-item" data-id-uc="1" data-nome-uc="Disciplina XPTO Exemplo 1"  data-faculdade="FCT">
+              <span class="label-info">Disciplina XPTO Exemplo 1</span>
+              <span class="label-info">FCT</span>
+              <div class="container-action-btn">
+                <button type="button" class="btn btn-delete-curriculares delete">
+                  <i class="fas fa-trash delete"></i>
+                </button>
+                <button type="button" class="btn update btn-edit-curriculares">
+                  <i class="fas fa-edit update"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-item d-none" data-tab="cursos">
+          <form action="" class="form-create-cursos">
+            <input type="hidden" class="form-control" name="id-curso" id="id-curso">
+            <div class="form-group-inline">
+              <div class="form-group">
+                  <label for="nome-curso">Nome</label>
+                  <input type="text" class="form-control" name="nome-curso" id="nome-curso">
+                  <small class="feedback-error d-none" data-error-feedback="nome-curso"></small>
+                  <small class="feedback-error d-none" data-error-feedback="id-curso"></small>
+              </div>
+              <div class="form-group">
+                  <label for="faculdade-curso">Faculdade/Escola</label>
+                  <input type="text" class="form-control" name="faculdade-curso" id="faculdade-curso">
+                  <small class="feedback-error d-none" data-error-feedback="faculdade-curso"></small>
+              </div>
+            </div>
+            <div class="form-group-inline">
+              <div class="form-group">
+                  <label for="grau-curso">Grau</label>
+                  <select class="form-control" name="grau-curso" id="grau-curso">
+                    <option value="" disabled>selecione um grau</option>
+                    <option value="licenciatura">Licenciatura</option>
+                    <option value="mestrado">Mestrado</option>
+                    <option value="doutorado">Doutorado</option>
+                  </select>
+                  <small class="feedback-error d-none" data-error-feedback="grau-curso"></small>
+              </div>
+              <div class="form-group">
+                  <label for="semestres-curso">Semestres</label>
+                  <input type="number" class="form-control" name="semestres-curso" id="semestres-curso">
+                  <small class="feedback-error d-none" data-error-feedback="semestres-curso"></small>
+              </div>
+            </div>
+            <div class="container-create-btn">
+              <button type="reset" class="btn btn-cancel">Cancelar</button>
+              <button type="button" class="btn btn-create">Criar</button>
+              <button type="button" class="btn btn-update d-none">Atualizar</button>
+            </div>
+          </form>
+          <div class="container-data list-cursos">
+            <div class="loader-container d-none">
+              <div class="lds-ring">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+            </div>
+            <div class="cursos-item-list" data-id-curso="1" data-nome-curso="Engenharia Informática" data-faculdade-curso="FCT" data-grau-curso="licenciatura" data-semestre-curso="8">
+              <div class="container-info">
+                <div class="info-item">
+                  <b class="label-info">Nome: </b>
+                  <span class="label-info">Engenharia Informática</span>
+                </div>
+                <div class="info-item">
+                  <b class="label-info">Faculdade/Escola: </b>
+                  <span class="label-info">Licenciatura</span>
+                </div>
+                <div class="info-item">
+                  <b class="label-info">Grau: </b>
+                  <span class="label-info">Licenciatura</span>
+                </div>
+                <div class="info-item">
+                  <b class="label-info">Semestres: </b>
+                  <span class="label-info">8</span>
+                </div>
+              </div>
+              <div class="container-actions">
+                <div class="btn-actions">
+                  <button type="button" class="btn delete btn-delete-curso">
+                    <i class="fas fa-trash delete"></i>
+                  </button>
+                  <button type="button" class="btn update btn-edit-curso">
+                    <i class="fas fa-edit update"></i>
+                  </button>
+                </div>
+                <button type="button" class="btn add btn-add-curso">
+                  <i class="fas fa-plus add"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-item d-none" data-tab="matriculas">
+          <form action="" class="form-create-matriculas">
+            <div class="form-group">
+                <label for="aluno-nome">Nome</label>
+                <input type="text" class="form-control" name="aluno-nome" id="aluno-nome">
+                <small class="feedback-error d-none" data-error-feedback="aluno-nome"></small>
+            </div>
+            <div class="form-group-inline">
+              <div class="form-group">
+                  <label for="aluno-nascimento">Nascimento</label>
+                  <input type="date" class="form-control" name="aluno-nascimento" id="aluno-nascimento">
+                  <small class="feedback-error d-none" data-error-feedback="aluno-nascimento"></small>
+              </div>
+              <div class="form-group">
+                  <label for="aluno-nif">NIF</label>
+                  <input type="text" class="form-control" name="aluno-nif" id="aluno-nif">
+                  <small class="feedback-error d-none" data-error-feedback="aluno-nif"></small>
+              </div>
+            </div>
+            <div class="container-create-btn">
+              <button type="reset" class="btn btn-cancel">Cancelar</button>
+              <button type="button" class="btn btn-create">Criar</button>
+            </div>
+          </form>
+          <div class="container-data list-alunos">
+            <div class="loader-container d-none">
+              <div class="lds-ring">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+            </div>
+            <div class="aluno-info-item" data-id-aluno="1">
+              <div class="info-aluno">
+                <div class="info-item">
+                  <b class="label-info">Nome: </b>
+                  <span class="label-info">Erickson de Carvalho Vaz</span>
+                </div>
+                <div class="info-item">
+                  <b class="label-info">Nascimento: </b>
+                  <span class="label-info">01/09/1996</span>
+                </div>
+                <div class="info-item">
+                  <b class="label-info">NIF: </b>
+                  <span class="label-info">123456789</span>
+                </div>
+              </div>
+              <span class="badge-status-matricula not">não matriculado</span>
+              <div class="actions-edit-aluno">
+                <button type="button" class="btn edit btn-edit-aluno">
+                  <i class="fas fa-edit edit"></i>
+                </button>
+                <button type="button" class="btn delete btn-delete-aluno">
+                  <i class="fas fa-trash delete"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container-data tab-item d-none" data-tab="notas">
+          <div class="loader-container d-none">
+            <div class="lds-ring">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+          <div class="container-filter-curso">
+            <span class="label">Filtrar: </span>
+            <div class="list-cursos-filter">
+              <div class="item-filter filter active" data-filter="engenharia informática">
+                <p class="nome-curso filter">Engenharia Informática</p>
+                <span class="label-grau filter">licenciatura</span>
+              </div>
+              <div class="item-filter filter" data-filter="engenharia electrotécnica">
+                <p class="nome-curso filter">Engenharia Electrotécnica</p>
+                <span class="label-grau filter">licenciatura</span>
+              </div>
+              <div class="item-filter filter d-none" data-filter="engenharia mecânica">
+                <p class="nome-curso filter">Engenharia Mecânica</p>
+                <span class="label-grau filter">licenciatura</span>
+              </div>
+            </div>
+          </div>
+          <div class="list-alunos-matriculados">
+              <div class="alunos-matriculados-item" data-id-aluno="1">
+                <div class="info-aluno">
+                  <div class="info-item">
+                    <b class="label-info">Nome: </b>
+                    <span class="label-info">Erickson de Carvalho Vaz</span>
+                  </div>
+                  <div class="info-item">
+                    <b class="label-info">Nascimento: </b>
+                    <span class="label-info">01/09/1996</span>
+                  </div>
+                  <div class="info-item">
+                    <b class="label-info">NIF: </b>
+                    <span class="label-info">123456789</span>
+                  </div>
+                </div>
+                <span class="badge-status-matricula okay">matriculado</span>
+                <button type="button" class="btn btn-edit-aluno publish">
+                  Publicar Notas
+                </button>
+              </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="site-footer">
+      &copy; - Todos os direitos reservados ao Grupo TEM - UniCV Mestrado Engenharia Informática, 2026
+    </footer>
+
+    <script src="ts/app.ts" type="module" defer></script>
+  </body>
+</html>

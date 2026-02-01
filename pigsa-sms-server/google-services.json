@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "394390144186",
+    "project_id": "csu-sms-server-v1",
+    "storage_bucket": "csu-sms-server-v1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:394390144186:android:fe0c5b1b86175226a52e83",
+        "android_client_info": {
+          "package_name": "cv.csu.smsserver"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0EXpPmpTnQ7QtLfOYf9vtHZ9W62J7kiU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

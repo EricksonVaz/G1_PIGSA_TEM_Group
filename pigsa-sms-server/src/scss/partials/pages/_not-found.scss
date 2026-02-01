@@ -1,0 +1,35 @@
+#not-found {
+    @extend %page-content-certer;
+    @extend %csu-blue-bg;
+    
+    //@include dgis-bg1();
+
+    .main-content {
+        @extend %bring-forward;
+        flex-grow: 1;
+
+        @include container-pannel;
+    }
+
+    .panel-action{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+
+        .heading-error-code{
+            color: gray;
+            font-size: 18rem;
+
+            @media (max-width:485px) {
+                font-size: 12rem;
+            }
+        }
+
+        .btn-back{
+            @extend %btn-action;
+        }
+    }
+
+    @include main-footer;
+}

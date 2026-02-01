@@ -1,0 +1,11 @@
+node_modules
+.parcel-cache/
+src/data/bdCSV.json
+src/data/bdCSV.xlsx
+src/data/users.json
+public/uploads/
+src/cronjobs/excels/*.xlsx
+index.js
+src/data/users/*.json
+*.map
+.github

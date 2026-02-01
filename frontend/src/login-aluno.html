@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+  <head>
+
+    <include
+      src="src/components/head-metadata.html"
+      locals='{
+        "title": "PIGSA — App Alunos - Login"
+      }'
+    ></include>
+
+  </head>
+  <body class="alunos">
+
+    <!-- <include
+      src="src/components/main-header.html"
+      locals='{
+        "inicio": "#inicio",
+        "rifas": "#rifas",
+        "vencedores": "#vencedores",
+        "parceiros": "#parceiros",
+        "sobre": "#sobre",
+        "contacto": "#contacto",
+        "active":"inicio"
+      }'
+    >
+    </include> -->
+    <a
+      href="alunos.html"
+      class="d-none"
+    ></a>
+    <main class="main-content">
+        <div class="login-container">
+            <a href="index.html" class="link-return">Voltar para a página principal</a>
+            <div class="login-container-form">
+                <div class="loader-container d-none">
+                  <div class="lds-ring">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </div>
+                </div>
+                <img src="/src/img/mini-logo.png?width=150px&as=webp" class="login-logo-page" alt="">
+                <form action="" class="form-login">
+                    <div class="form-group">
+                        <label for="code">Código do Aluno</label>
+                        <input type="text" class="form-control" name="code" id="code">
+                        <small class="feedback-error d-none" data-error-feedback="code"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="code">Password</label>
+                        <input type="password" class="form-control" name="password" id="password">
+                        <small class="feedback-error d-none" data-error-feedback="password"></small>
+                    </div>
+                    <button type="submit" class="btn btn-login">Entrar</button>
+                </form>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="site-footer">
+      &copy; - Todos os direitos reservados ao Grupo TEM - UniCV Mestrado Engenharia Informática, 2026
+    </footer>
+
+    <script src="ts/app.ts" type="module" defer></script>
+  </body>
+</html>

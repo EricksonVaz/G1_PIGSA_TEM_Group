@@ -1,0 +1,20 @@
+<header class="main-header">
+  <div class="content">
+    <img src="img/rifa_logo_bg_2.png?width=132px&height=89px&as=webp" alt="logo principal rifas.cv">
+    <nav class="main-navigation">
+      <a href="{{ inicio }}" class="link-nav {{ active =='inicio' ? 'active' : '' }}">Início</a>
+      <a href="{{ rifas }}" class="link-nav {{ active =='rifas' ? 'active' : '' }}">Rifas</a>
+      <a href="{{ vencedores }}" class="link-nav {{ active =='vencedores' ? 'active' : '' }}">Vencedores</a>
+      <a href="{{ parceiros }}" class="link-nav ">Parceiros</a>
+      <a href="{{ sobre }}" class="link-nav">Sobre</a>
+      <a href="{{ contacto }}" class="link-nav">Contacto</a>
+      <button type="button" class="btn btn-action-price" data-modal="modal-premios">
+        Ver Meus Prêmios
+        <i class="fa-solid fa-gift"></i>
+      </button>
+    </nav>
+    <button type="button" class="btn btn-responsive-menu" aria-label="botão visualizar menu responsivo">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </div>
+</header>

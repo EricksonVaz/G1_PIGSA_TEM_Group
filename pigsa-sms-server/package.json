@@ -1,0 +1,46 @@
+{
+  "name": "pigsa_sms_server",
+  "version": "1.0.0",
+  "description": "",
+  "source": "src/index.html",
+  "browserslist": "> 0.1%, last 3 versions",
+  "scripts": {
+    "start": "rimraf .parcel-cache && rimraf www && parcel --no-cache --lazy -p 4755 --dist-dir www --open",
+    "build": "rimraf www && parcel build --public-url ./ --dist-dir www && npx cap copy android"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EricksonVaz/csu-sms-server.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EricksonVaz/csu-sms-server/issues"
+  },
+  "homepage": "https://github.com/EricksonVaz/csu-sms-server#readme",
+  "devDependencies": {
+    "@capacitor/cli": "^8.0.2",
+    "@fortawesome/fontawesome-free": "^6.2.1",
+    "@parcel/packager-raw-url": "^2.8.2",
+    "@parcel/transformer-sass": "^2.8.2",
+    "@parcel/transformer-webmanifest": "^2.8.2",
+    "parcel": "^2.8.2",
+    "process": "^0.11.10",
+    "rimraf": "^3.0.2",
+    "sass": "^1.97.3",
+    "sharp": "^0.33.5",
+    "sweetalert": "^2.1.2",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.0.2",
+    "@capacitor/core": "^8.0.2",
+    "capacitor-sms-sender": "^1.1.0",
+    "chart.js": "^4.4.0",
+    "firebase": "^10.12.2",
+    "json-as-xlsx": "^2.5.3",
+    "jwt-decode": "^3.1.2",
+    "query-string": "^8.1.0"
+  }
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+  <head>
+
+    <include
+      src="src/components/head-metadata.html"
+      locals='{
+        "title": "PIGSA — Universidade de Cabo Verde"
+      }'
+    ></include>
+
+  </head>
+  <body class="index">
+
+    <!-- <include
+      src="src/components/main-header.html"
+      locals='{
+        "inicio": "#inicio",
+        "rifas": "#rifas",
+        "vencedores": "#vencedores",
+        "parceiros": "#parceiros",
+        "sobre": "#sobre",
+        "contacto": "#contacto",
+        "active":"inicio"
+      }'
+    >
+    </include> -->
+
+    <main class="main-content">
+      <div class="container-img-title-app">
+        <img src="/src/img/mini-logo.png?width=250px&as=webp" alt="">
+        <h1 class="app-title">Plataforma Integrada De Gestão Academica</h1>
+      </div>
+      <div class="container-link-nav">
+        <a href="backoffice.html" class="link-nav-app">
+          <img src="/src/img/project-management.png?width=80px" class="img-link" alt="imagem link back office">
+          <span class="label-link">Aplicação Back Office</span>
+        </a>
+        
+        <a href="login-aluno.html" class="link-nav-app">
+          <img src="/src/img/app.png?width=80px" class="img-link" alt="imagem link back office">
+          <span class="label-link">Aplicação do Aluno</span>
+        </a>
+
+        <a href="https://mynodejs.host/sms-server" target="_blank" class="link-nav-app">
+          <img src="/src/img/sms.png?width=80px" class="img-link" alt="imagem link SMS Server">
+          <span class="label-link">SMS Server</span>
+        </a>
+      </div>
+
+    </main>
+    <footer class="site-footer">
+      &copy; - Todos os direitos reservados ao Grupo TEM - UniCV Mestrado Engenharia Informática, 2026
+    </footer>
+
+    <script src="ts/app.ts" type="module" defer></script>
+  </body>
+</html>

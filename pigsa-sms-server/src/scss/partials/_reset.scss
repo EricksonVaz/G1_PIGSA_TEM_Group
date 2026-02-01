@@ -1,0 +1,80 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 62.5%;
+    color: black;
+    width: 100vw;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+body,
+#app {
+    width: 100vw;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+a,
+button {
+    cursor: pointer;
+    color: black;
+}
+
+ul,
+li,
+ol {
+    list-style: none;
+}
+
+input,
+textarea,
+select {
+    border: none;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.btn {
+    border: none;
+    padding: .5rem 1rem;
+}
+
+.feedback-error {
+    font-size: 1.1rem;
+    font-weight: bolder;
+    color: tomato;
+    margin-top: .5rem;
+}
+.feedback-success {
+    font-size: 1.4rem;
+    font-weight: bolder;
+    color: green;
+    margin-top: .5rem;
+}
+
+.not-allowed{
+    opacity: .6!important;
+    cursor: not-allowed!important;
+}
+
+.d-none {
+    display: none !important;
+}
+
+.hide{
+    visibility: hidden !important;
+}
+
+label,h2{
+    color: gainsboro;
+}

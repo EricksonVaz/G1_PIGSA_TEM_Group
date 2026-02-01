@@ -1,0 +1,64 @@
+.card-denuncias{
+    flex-basis: 35rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: tomato;
+    color: white;
+    padding: .4rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    border: .5rem solid transparent;
+    height: 17.2rem;
+
+    &[data-state="closed"]{
+        background-color: green;
+    }
+
+    &.active{
+        border-color: orange;
+    }
+
+    .fa-solid{
+        font-size: 5rem;
+        opacity: .6;
+    }
+
+    .container-info{
+        display: flex;
+        gap: 1rem;
+        font-size: 1.35rem;
+        height: 10rem;
+
+        .label{
+            font-weight: bold;
+        }
+
+        .counter-day{
+            display: flex;
+            flex-direction: column;
+            background-color: rgba(0, 0, 0, 0.3);
+            font-size: 2rem;
+            padding: 1rem;
+            width: 8rem;
+            height: 8rem;
+            border-radius: 1rem;
+            gap: .5rem;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container-details {
+            display: flex;
+            gap: .5rem;
+            flex-direction: column;
+        }
+    }
+
+    .container-status{
+        border-top: .5rem solid rgba(0, 0, 0, 0.3);
+        font-size: 1.35rem;
+        padding-top: .5rem;
+        font-weight: bold;
+    }
+}

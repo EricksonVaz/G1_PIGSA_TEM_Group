@@ -1,0 +1,1 @@
+export const regexValidateNIA = /^\d{1,2}\.\d{6}\.\d{6}$/;

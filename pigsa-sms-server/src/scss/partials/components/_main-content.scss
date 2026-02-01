@@ -1,0 +1,17 @@
+@mixin main-content{
+    .main-content {
+        @extend %bring-forward;
+        flex-grow: 1;
+        width: 1000px;
+        margin: 0 auto;
+        margin-top: 15rem;
+
+        @content;
+
+        @media (max-width:1045px) {
+            width: 98%;
+
+        }
+
+    }
+}

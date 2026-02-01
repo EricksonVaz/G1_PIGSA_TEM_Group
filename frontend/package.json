@@ -1,0 +1,36 @@
+{
+  "name": "sistema_academico_frontend_app",
+  "version": "1.0.0",
+  "source": "src/index.html",
+  "browserslist": "> 0.1%, last 3 versions",
+  "scripts": {
+    "start": "rimraf .parcel-cache && rimraf dev && parcel --no-cache --lazy -p 4569 --dist-dir dev --open",
+    "build": "rimraf dist && parcel build --public-url ./ --dist-dir dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@fortawesome/fontawesome-free": "^6.4.2",
+    "@glidejs/glide": "^3.6.0",
+    "@parcel/packager-raw-url": "^2.12.0",
+    "@parcel/transformer-sass": "^2.12.0",
+    "@parcel/transformer-webmanifest": "^2.12.0",
+    "@types/aos": "^3.0.4",
+    "@types/glidejs__glide": "^3.6.2",
+    "css-tooltip": "^0.3.4",
+    "parcel": "^2.12.0",
+    "posthtml-doctype": "^1.1.1",
+    "posthtml-expressions": "^1.11.4",
+    "posthtml-include": "^2.0.1",
+    "rimraf": "^5.0.1",
+    "sass": "^1.67.0",
+    "sharp": "^0.33.5",
+    "sweetalert": "^2.1.2",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "aos": "^3.0.0-beta.6"
+  }
+}

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+  <head>
+
+    <include
+      src="src/components/head-metadata.html"
+      locals='{
+        "title": "PIGSA — App Alunos"
+      }'
+    ></include>
+
+  </head>
+  <body class="alunos">
+
+    <!-- <include
+      src="src/components/main-header.html"
+      locals='{
+        "inicio": "#inicio",
+        "rifas": "#rifas",
+        "vencedores": "#vencedores",
+        "parceiros": "#parceiros",
+        "sobre": "#sobre",
+        "contacto": "#contacto",
+        "active":"inicio"
+      }'
+    >
+    </include> -->
+
+    <main class="main-content">
+
+        <div class="page-aluno">
+            <div class="container-profile-aluno">
+                <div class="loader-container">
+                    <div class="lds-ring">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+                <div class="container-img-aluno">
+                    <img src="/src/img/user.png?width=150px" alt="">
+                </div>
+                <div class="info-container">
+                    <h3 class="label-main aluno-name">Erickson de Carvalho Vaz
+                    </h3>
+                    <div class="container-info">
+                        <b class="label-info-title">Codigo:</b>
+                        <span class="label-info">46910</span>
+                    </div>
+                    <div class="container-info">
+                        <b class="label-info-title">Mãe:</b>
+                        <span class="label-info">Maria Manuela Tavares de
+                            Carvalho</span>
+                    </div>
+                    <div class="container-info">
+                        <b class="label-info-title">Pai:</b>
+                        <span class="label-info">Basilio Vaz</span>
+                    </div>
+                    <div class="container-info">
+                        <b class="label-info-title">Data Nascimento:</b>
+                        <span class="label-info">01/09/1996</span>
+                    </div>
+                    <div class="container-info">
+                        <b class="label-info-title">BI/CNI:</b>
+                        <span class="label-info">420616</span>
+                    </div>
+                    <div class="container-info">
+                        <b class="label-info-title">NIF:</b>
+                        <span class="label-info">123456789</span>
+                    </div>
+                    <div class="container-info">
+                        <b class="label-info-title">Endereço:</b>
+                        <span class="label-info">Ponta d'Água</span>
+                    </div>
+                    <h3 class="label-main">Contacto</h3>
+                    <div class="container-info">
+                        <i class="fa-regular fa-envelope"></i>
+                        <span class="label-info">ericksoncv1@outlook.com</span>
+                    </div>
+                    <div class="container-info">
+                        <i class="fa-solid fa-phone"></i>
+                        <span class="label-info">5911626</span>
+                    </div>
+                </div>
+                <div class="container-actions-btn">
+                    <button type="button" class="btn btn-update-info">Atualizar</button>
+                    <button type="button" class="btn btn-update-pass">Atualizar Password</button>
+                </div>
+                <button type="button" class="btn btn-logout">Terminar Sessão</button>
+            </div>
+            <div class="container-view-actions">
+                <div class="jumbotron">
+                    <h2>Bem-vindo de Volta</h2>
+                </div>
+                <div class="container-tab-btn">
+                    <button type="button" class="btn btn-tab active" data-tab-id="matricula-nota">Notas e Avaliações</button>
+                    <button type="button" class="btn btn-tab" data-tab-id="pagamentos">Próprinas e Pagamentos</button>
+                </div>
+                <div class="container-data container-tab">
+                    <div class="loader-container">
+                        <div class="lds-ring">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                    <div class="tab-item" data-tab="matricula-nota">
+                        <div class="cotainer-matriculas">
+                            <h3 class="container-title">Cursos matriculados</h3>
+                            <div class="curso-lista">
+                                <div class="curso-item active" data-id-curso="1">
+                                    <span class="curso-name">Engenharia Informatica</span>
+                                    <div class="curso-desc">
+                                        <div class="desc-info">
+                                            <b class="desc-title">Grau: </b>
+                                            <span class="desc-label">Licenciatura</span>
+                                        </div>
+                                        <div class="desc-info">
+                                            <b class="desc-title">Faculdade: </b>
+                                            <span class="desc-label">FCT</span>
+                                        </div>
+                                        <div class="desc-info">
+                                            <b class="desc-title">Semestres: </b>
+                                            <span class="desc-label">8</span>
+                                        </div>
+                                        <span class="status-badge matriculado">matriculado</span>
+                                        <span class="status-badge finalizado d-none">finalizado</span>
+                                    </div>
+                                </div>
+                                <div class="curso-item" data-id-curso="2">
+                                    <span class="curso-name">Engenharia mecanica</span>
+                                    <div class="curso-desc">
+                                        <div class="desc-info">
+                                            <b class="desc-title">Grau: </b>
+                                            <span class="desc-label">Mestrado</span>
+                                        </div>
+                                        <div class="desc-info">
+                                            <b class="desc-title">Faculdade: </b>
+                                            <span class="desc-label">FCT</span>
+                                        </div>
+                                        <div class="desc-info">
+                                            <b class="desc-title">Semestres: </b>
+                                            <span class="desc-label">8</span>
+                                        </div>
+                                        <span class="status-badge matriculado d-none">matriculado</span>
+                                        <span class="status-badge finalizado">finalizado</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container-notas">
+                            <h3 class="container-title">Notas</h3>
+                            <div class="list-notas">
+                                <div class="semestre-container">
+                                    <h4 class="semestre-title">
+                                        1º Semestre
+                                    </h4>
+                                    <div class="disiciplina-item">
+                                        <span class="nome">Nome da Disiciplina XPTO Exemplo</span>
+                                        <div class="status-disicplina">
+                                            <span class="nota-final-label">18 valores</span>
+                                            <span class="status-badge aprovado">aprovado</span>
+                                        </div>
+                                    </div>
+                                    <div class="disiciplina-item">
+                                        <span class="nome">Nome da Disiciplina XPTO
+                                            Exemplo</span>
+                                        <div class="status-disicplina">
+                                            <span class="nota-final-label">18 valores</span>
+                                            <span class="status-badge aprovado">aprovado</span>
+                                        </div>
+                                    </div>
+                                    <div class="disiciplina-item">
+                                        <span class="nome">Nome da Disiciplina XPTO
+                                            Exemplo</span>
+                                        <div class="status-disicplina">
+                                            <span class="nota-final-label">8 valores</span>
+                                            <span class="status-badge reprovado">reprovado</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="semestre-container">
+                                    <h4 class="semestre-title">
+                                        2º Semestre
+                                    </h4>
+                                    <div class="disiciplina-item">
+                                        <span class="nome">Nome da Disiciplina XPTO Exemplo</span>
+                                        <div class="status-disicplina">
+                                            <span class="nota-final-label">18 valores</span>
+                                            <span class="status-badge aprovado">aprovado</span>
+                                        </div>
+                                    </div>
+                                    <div class="disiciplina-item">
+                                        <span class="nome">Nome da Disiciplina XPTO
+                                            Exemplo</span>
+                                        <div class="status-disicplina">
+                                            <span class="nota-final-label">18 valores</span>
+                                            <span class="status-badge aprovado">aprovado</span>
+                                        </div>
+                                    </div>
+                                    <div class="disiciplina-item">
+                                        <span class="nome">Nome da Disiciplina XPTO
+                                            Exemplo</span>
+                                        <div class="status-disicplina">
+                                            <span class="nota-final-label">8 valores</span>
+                                            <span class="status-badge reprovado">reprovado</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="semestre-container">
+                                    <h4 class="semestre-title">
+                                        3º Semestre
+                                    </h4>
+                                    <div class="disiciplina-item">
+                                        <span class="nome">Nome da Disiciplina XPTO Exemplo</span>
+                                        <div class="status-disicplina">
+                                            <span class="nota-final-label">18 valores</span>
+                                            <span class="status-badge aprovado">aprovado</span>
+                                        </div>
+                                    </div>
+                                    <div class="disiciplina-item">
+                                        <span class="nome">Nome da Disiciplina XPTO
+                                            Exemplo</span>
+                                        <div class="status-disicplina">
+                                            <span class="nota-final-label">18 valores</span>
+                                            <span class="status-badge aprovado">aprovado</span>
+                                        </div>
+                                    </div>
+                                    <div class="disiciplina-item">
+                                        <span class="nome">Nome da Disiciplina XPTO
+                                            Exemplo</span>
+                                        <div class="status-disicplina">
+                                            <span class="nota-final-label">8 valores</span>
+                                            <span class="status-badge reprovado">reprovado</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-item d-none" data-tab="pagamentos">
+                        <div class="cotainer-matriculas">
+                            <h3 class="container-title">Cursos matriculados</h3>
+                            <div class="curso-lista filter-propinas">
+                                <div class="curso-item active" data-id-curso="1">
+                                    <span class="curso-name">Engenharia Informatica</span>
+                                    <div class="curso-desc">
+                                        <div class="desc-info">
+                                            <b class="desc-title">Grau: </b>
+                                            <span class="desc-label">Licenciatura</span>
+                                        </div>
+                                        <div class="desc-info">
+                                            <b class="desc-title">Faculdade: </b>
+                                            <span class="desc-label">FCT</span>
+                                        </div>
+                                        <div class="desc-info">
+                                            <b class="desc-title">Semestres: </b>
+                                            <span class="desc-label">8</span>
+                                        </div>
+                                        <span class="status-badge matriculado">matriculado</span>
+                                        <span class="status-badge finalizado d-none">finalizado</span>
+                                    </div>
+                                </div>
+                                <div class="curso-item" data-id-curso="2">
+                                    <span class="curso-name">Engenharia mecanica</span>
+                                    <div class="curso-desc">
+                                        <div class="desc-info">
+                                            <b class="desc-title">Grau: </b>
+                                            <span class="desc-label">Mestrado</span>
+                                        </div>
+                                        <div class="desc-info">
+                                            <b class="desc-title">Faculdade: </b>
+                                            <span class="desc-label">FCT</span>
+                                        </div>
+                                        <div class="desc-info">
+                                            <b class="desc-title">Semestres: </b>
+                                            <span class="desc-label">8</span>
+                                        </div>
+                                        <span class="status-badge matriculado d-none">matriculado</span>
+                                        <span class="status-badge finalizado">finalizado</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h3 class="container-title">Histórico de Pagamentos</h3>
+                        <div class="lista-pagamentos-container">
+                            <div class="pagamento-item">
+                                <div class="invoice">
+                                    <b>Nº Invoice:</b>
+                                    <span class="label-info">#555-22-1</span>
+                                </div>
+                                <div class="reference">
+                                    <span class="label-info">JAN/2026</span>
+                                </div>
+                                <div class="action-status">
+                                    <span class="badge-status-pay notpay">por pagar</span>
+                                    <i class="icon-pay fa-regular fa-credit-card" data-proprina-id="1" title="pagar agora"></i>
+                                </div>
+                            </div>
+                            <div class="pagamento-item">
+                                <div class="invoice">
+                                    <b>Nº Invoice:</b>
+                                    <span class="label-info">#555-22-1</span>
+                                </div>
+                                <div class="reference">
+                                    <span class="label-info">JAN/2026</span>
+                                </div>
+                                <div class="action-status">
+                                    <span class="badge-status-pay pay">pago</span>
+                                    <i class="icon-pay fa-solid fa-receipt" data-pagamento-id="1" title="baixar recibo"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="site-footer">
+      &copy; - Todos os direitos reservados ao Grupo TEM - UniCV Mestrado Engenharia Informática, 2026
+    </footer>
+
+    <script src="ts/app.ts" type="module" defer></script>
+  </body>
+</html>

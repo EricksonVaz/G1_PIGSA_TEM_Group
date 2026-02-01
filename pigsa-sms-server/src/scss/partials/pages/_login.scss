@@ -1,0 +1,17 @@
+#login{
+    @extend %page-content-certer;
+    @extend %csu-blue-bg;
+    
+    //@include dgis-bg1();
+
+    .main-content{
+        @extend %bring-forward;
+        flex-grow: 1;
+
+        @include container-pannel;
+    }
+
+    @include form-login;
+
+    @include main-footer;
+}

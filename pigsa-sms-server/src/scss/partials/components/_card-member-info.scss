@@ -1,0 +1,25 @@
+.card-member-info{
+    border: 2px solid gray;
+    padding: .5rem;
+    border-radius: 5px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    font-size: 1.2rem;
+
+    .label-container{
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .label-inline{
+        display: flex;
+        gap: .5rem;
+    }
+
+    .label-title {
+        font-weight: bold;
+    }
+}

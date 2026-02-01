@@ -1,0 +1,96 @@
+table,
+tr,
+td {
+    border: 1px solid #f6c400;
+    border-collapse: separate;
+    text-align: center;
+    background-color: white;
+    font-weight: bold;
+    color: #4c4a4a;
+    font-size: 1.3rem;
+}
+
+table td,
+table th {
+    width: 1%;
+    white-space: nowrap;
+    padding: 10px;
+}
+
+table th i {
+    margin-left: 15px;
+    padding: 5px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+thead tr {
+    position: sticky;
+    top: 0;
+    background-color: rgb(35, 122, 199);
+    color: white;
+}
+
+thead th {
+    padding: 5px;
+}
+
+tr.warning td {
+    background-color: goldenrod;
+    font-weight: bold;
+    color: white;
+}
+
+tr.error td {
+    background-color: tomato !important;
+    font-weight: bold;
+    color: white;
+}
+
+table tr.selected td {
+    background-color: #cbcbcb !important;
+    color: rgb(59, 59, 59) !important;
+}
+.list-table-container{
+    width: 100%;
+    position: relative;
+
+    .loader {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(255, 255, 255, 0.527);
+        z-index: 2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include lds-ellipsis;
+    }
+}
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    position: relative;
+    max-height: 300px;
+    min-height: 200px;
+    overflow-y: auto;
+    margin-top: 1rem;
+}
+
+.btn-export-excel{
+    background-color: white;
+    border: 2px solid green;
+    color: green;
+    display: inline-block;
+    margin-right: auto;
+    margin-top: 1rem;
+    transition: all .3s;
+    font-weight: bold;
+
+    &:hover{
+        background-color: green;
+        color: white;
+    }
+}

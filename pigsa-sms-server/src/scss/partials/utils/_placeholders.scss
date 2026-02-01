@@ -1,0 +1,256 @@
+%page-content-certer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+}
+
+%csu-blue-bg{
+    background-color: #8f65c7;//#8f65c7
+}
+
+%place-pseudo-element {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+%bring-forward {
+    position: relative;
+    z-index: 1;
+}
+
+%form-control {
+    padding: 1rem .5rem;
+    background-color: rgba(206, 206, 206, 0.782);
+    color: rgb(37, 37, 37);
+    font-size: 1.5rem;
+    border: none;
+
+    &[type="file"]{
+        padding: .7rem 1rem;
+    }
+}
+
+%btn-search {
+    background-color: orange;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 1rem 2rem;
+    color: white;
+}
+
+%badge-default {
+    background-color: gray;
+    font-size: 1.3rem;
+    padding: .3rem .6rem;
+    border-radius: 1rem;
+}
+
+%btn-action{
+    background-color: transparent;
+    border: 2px solid rgba(0, 0, 0, 0.522);
+    background-color: rgba(0, 0, 0, 0.522);
+    color: gainsboro;
+    font-size: 1.5rem;
+    padding: .5rem 3rem;
+    border-radius: 1rem;
+    font-weight: bold;
+    transition: all .3s;
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.522);
+        color: gainsboro;
+    }
+}
+
+%btn-nav-auth{
+    background-color: transparent;
+    border: 2px solid #FFA500;
+    color: #FFA500;
+    font-size: 1.5rem;
+    padding: 1rem 3rem;
+    font-weight: bold;
+    transition: all .3s;
+
+    &:hover,&.active {
+        background-color: #FFA500;
+        color: whitesmoke;
+    }
+}
+
+%link-action {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: .5rem;
+    background-color: white;
+    border: 2px solid orange;
+    color: orange;
+    transition: background-color .3s;
+    text-align: center;
+
+    &:hover {
+        background-color: orange;
+        color: white;
+    }
+}
+
+%form-login-style{
+    background-color: #8f65c7;
+    padding: 2rem;
+    //border-radius: 5px;
+    border: 1px solid #8f65c7;
+
+    width: 280px;
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        label {
+            margin-bottom: 10px;
+            margin-top: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: gainsboro;
+        }
+
+        .form-control {
+            @extend %form-control;
+        }
+    }
+
+    .login-options {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 2rem;
+        gap: 1.5rem;
+    }
+
+    .btn-login {
+        @extend %btn-action;
+    }
+
+    .register-link {
+        font-size: 1.4rem;
+        transition: all .3s;
+        font-weight: bold;
+        color: rgb(56, 56, 56);
+
+        &:hover {
+            color: rgb(0, 132, 255);
+            text-decoration: underline;
+        }
+    }
+}
+
+%card-requester {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    border: 2px solid rgba(128, 128, 128, 0.485);
+    padding: 1rem;
+    background-color: whitesmoke;
+    border-radius: 10px;
+
+    &.selected {
+        border-color: goldenrod;
+    }
+
+
+    .icon {
+        font-size: 4rem;
+        color: gray;
+    }
+
+    .requester-info {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        grid-template-areas:
+            "name name name"
+            "nim nia doc"
+        ;
+        gap: 1rem;
+
+        .label-name {
+            grid-area: name;
+            font-size: 1.6rem;
+            font-weight: bold;
+
+            @media (max-width:391px) {
+                font-size: 1.5rem;
+            }
+        }
+
+        .info-nim {
+            grid-area: nim;
+        }
+
+        .info-nia {
+            grid-area: nia;
+        }
+
+        .info-doc {
+            grid-area: doc;
+        }
+
+        @media (max-width:912px) {
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            grid-template-areas:
+                "name name"
+                "nim nia"
+                "doc ."
+            ;
+        }
+
+        @media (max-width:659px) {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    .container-info {
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+
+    .badge {
+        @extend %badge-default;
+        color: whitesmoke;
+        text-align: center;
+
+        &.g1 {
+            background-color: tomato;
+        }
+
+        &.g2 {
+            background-color: #FFAA00;
+        }
+
+        &.g3 {
+            background-color: #FFFF00;
+            color: grey;
+        }
+
+        &.g4 {
+            background-color: #005CE6;
+        }
+    }
+
+    @media (max-width:407px) {
+        flex-wrap: wrap;
+
+        .badge,
+        .icon {
+            margin: auto;
+        }
+    }
+}

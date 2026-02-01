@@ -1,0 +1,212 @@
+@mixin main-header{
+    .nav-icon-bar {
+        font-size: 3rem;
+        background-color: #8f65c7;
+        padding: 1rem;
+        color: white;
+        border-radius: 1rem;
+        margin-left: 2rem;
+        cursor: pointer;
+    }
+
+    .menu-ctrl-container{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 4rem;
+
+        @media (max-width:305px) {
+            flex-wrap: wrap;
+            width: max-content;
+
+            :last-child{
+                display: none;
+            }
+        }
+    }
+
+    #main-header{
+        width: 100vw;
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        background-color: #44305F;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        z-index: 4;
+        font-size: 1.4rem;
+
+        .drop-nav{
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            margin-left: 15px;
+
+            .fas {
+                font-size: 4rem;
+                color: rgb(148, 148, 148);
+            }
+
+            .nav-group {
+                display: none;
+                position: absolute;
+                top: 40px;
+                right: 0px;
+            }
+
+            &:hover .nav-group,&.show .nav-group {
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                width: max-content;
+                background-color: #8f65c7;
+                padding: 5px;
+                gap: 1rem;
+                box-shadow: 0 0 5px rgb(177, 177, 177);
+            }
+
+            .label-user {
+                text-transform: lowercase;
+                font-weight: bold;
+                color: gainsboro;
+            }
+
+            .nav-link {
+                padding: 5px;
+
+                &:hover {
+                    color: orange;
+                }
+
+                &.logout-link,
+                &.logout-link:hover {
+                    color: tomato;
+                    font-weight: bolder;
+                }
+            }
+        }
+
+        @media (max-width:305px) {
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+    }
+
+    .navigation {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        padding-right: 1.2rem;
+        background-color: #44305F;
+        left: -60rem;
+        top: 0;
+        width: 35rem;
+        bottom: 0;
+        box-shadow: 0 0 1rem gray;
+        z-index: 4;
+        transition: .3s left ease-in-out;
+
+        &.active{
+            left: 0;
+        }
+
+        .menu-ctrl-container{
+            padding: 1rem;
+
+            @media (max-width:308px) {
+                width: 100vw;
+                gap: .2rem;
+            }
+        }
+
+        .link-container{
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+            padding: 2rem;
+            padding-top: 0;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+
+            .nav-link {
+                display: flex;
+                align-items: center;
+                font-size: 2rem;
+                position: relative;
+
+                .fa-solid {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 4rem;
+                    background-color: #2b1e3c;
+                    border: .3rem solid rgba(0, 0, 0, 0.362);
+                    border-radius: 100%;
+                    width: 105px;
+                    height: 76px;
+                    position: relative;
+                    left: 1.2rem;
+                }
+
+                .link-label {
+                    background-color: rgba(0, 0, 0, 0.362);
+                    color: white;
+                    padding: 1rem;
+                    border-top-right-radius: 1rem;
+                    border-bottom-right-radius: 1rem;
+                    width: 100%;
+                    text-align: center;
+
+                    @media (max-width:223px) {
+                        font-size: 1.2rem;
+                    }
+                }
+
+                &:hover,
+                &.active {
+                    .link-label {
+                        background-color: orange;
+                    }
+
+                    .fa-solid {
+                        color: orange;
+                        border-color: orange;
+                    }
+                }
+            }
+
+            @media (max-width:308px) {
+                width: 100vw;
+                padding: 0;
+                position: static;
+                margin-top: 30rem;
+                .nav-link {
+                    font-size: 1.7rem;
+                    padding: 0;
+                    padding-right: 1.4rem;
+                    width: 100vw;
+                    flex-shrink: 1;
+
+                    .fa-solid {
+                        font-size: 3rem;
+                        width: 85px;
+                        height: 60px;
+                    }
+                }
+            }
+        }
+
+        @media (max-width:364px) {
+            width: 100vw;
+        }
+    }
+
+    .nav-link {
+        font-weight: bold;
+        padding: 8px;
+        color: gainsboro;
+        text-decoration: none;
+    }
+}

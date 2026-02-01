@@ -1,0 +1,50 @@
+{
+  "name": "pigsa_api",
+  "version": "1.0.0",
+  "description": "API PIGSA (Express + Sequelize + MariaDB + TS + Parcel)",
+  "source": "src/index.ts",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm i && node --max-old-space-size=4096 index.js",
+    "dev": "nodemon --watch ./**/*.js --trace-warnings",
+    "watch": "parcel watch",
+    "build": "parcel build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "targets": {
+    "main": {
+      "source": "src/index.ts",
+      "distDir": ".",
+      "includeNodeModules": true,
+      "context": "node"
+    }
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "helmet": "^7.1.0",
+    "jsonwebtoken": "^9.0.3",
+    "mariadb": "^3.3.1",
+    "morgan": "^1.10.0",
+    "pg": "^8.13.1",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.37.3"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/morgan": "^1.9.7",
+    "@types/node": "^22.7.4",
+    "nodemon": "^3.1.7",
+    "parcel": "^2.12.0",
+    "typescript": "^5.6.3"
+  }
+}

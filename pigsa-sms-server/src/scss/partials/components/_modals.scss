@@ -1,0 +1,802 @@
+.modal{
+    position: fixed;
+    background-color: whitesmoke;
+    top: -100rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    width: 300px;
+    height: fit-content;
+    padding: 10px;
+    border-radius: 10px;
+    transition: top .5s;
+
+    .modal-header{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 2px solid gray;
+        padding-bottom: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .modal-title{
+        font-size: 2rem;
+    }
+
+    .close-modal{
+        font-size: 2rem;
+        font-weight: bold;
+        background-color: black;
+        color: whitesmoke;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: .5rem 1rem;
+        border-radius: 100%;
+        position: absolute;
+        right: -16px;
+        top: -17px;
+        cursor: pointer;
+    }
+
+    .modal-body{
+        position: relative;
+    }
+
+    %show-modal{
+        
+    }
+
+
+    &.modal-new-entity,
+    &.modal-new-indie,
+    &.modal-manage-users,
+    &.modal-update-records,
+    &.modal-manage-organization,
+    &.modal-manage-application,
+    &.modal-manage-benefit,
+    &.modal-create-organization,
+    &.modal-create-application,
+    &.modal-create-benef,
+    &.modal-manage-my-account,
+    &.modal-search-benefi-by-nia,
+    &.modal-send-feedback,
+    &.modal-new-csu-request,
+    &.modal-search-entities,
+    &.modal-solicitation-details,
+    &.modal-update-solicitation-docs,
+    &.modal-update-pass {
+        width: 500px;
+
+        &.show {
+            top: 12rem;
+        }
+    
+        @media (max-width:550px) {
+            width: 90%;
+    
+            .inline-control {
+                flex-direction: column;
+            }
+        }
+    }
+
+    &.modal-update-records{
+        .container-update{
+            max-height: 270px;
+            overflow-y: auto;
+        }
+    }
+
+    &.modal-show-notfounds {
+        width: 400px;
+
+        &.show {
+            top: 15rem;
+        }
+
+        @media (max-width:450px) {
+            width: 90%;
+
+            .inline-control {
+                flex-direction: column;
+            }
+        }
+    }
+
+    &.modal-attach-file{
+        &.show {
+            top: 15rem;
+        }
+    
+        @media (max-width:550px) {
+            width: 90%;
+    
+            .inline-control {
+                flex-direction: column;
+            }
+        }
+    }
+
+    &.modal-manage-users,
+    &.modal-update-records,
+    &.modal-manage-organization,
+    &.modal-send-feedback,
+    &.modal-show-notfounds,
+    &.modal-manage-application,
+    &.modal-manage-benefit,
+    &.modal-manage-my-account,
+    &.modal-create-organization,
+    &.modal-create-benef,
+    &.modal-create-application,
+    &.modal-search-entities{
+
+        .btn-request-delete,
+        .btn-view-request,
+        .btn-remove-request{
+            background-color: tomato;
+            font-weight: bold;
+            font-size: 1.4rem;
+            color: white;
+            margin: auto;
+            display: block;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .label-text{
+            font-size: 1.8rem;
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .btn-remove-request{
+            background-color: green;
+        }
+
+        .container-request-done{
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .navigation-progress{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 1rem;
+            border-top: 2px solid gray;
+            padding-top: .5rem;
+
+            .total-records-container{
+                font-size: 1.4rem;
+                display: flex;
+                gap: 1rem;
+
+                .label-total{
+                    font-weight: bold;
+                }
+            }
+
+            .btn-nav-container{
+                display: flex;
+                gap: 1rem;
+
+                .btn{
+                    background-color: transparent;
+                    border: 2px solid orange;
+                    font-weight: bold;
+                    transition: all .3s;
+
+                    &:hover{
+                        background-color: orange;
+                        color: white;
+                    }
+                }
+
+                .btn-save-updates{
+                    background-color: initial;
+                    color: initial;
+                    border-color: #009dff;
+                    &:hover{
+                        background-color: #009dff;
+                        color: white;
+                    }
+                }
+            }
+        }
+
+        .btn-groups{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 2px solid gray;
+            margin-top: 1rem;
+            padding-top: 1rem;
+
+            .btn-cancel-delete {
+                background-color: transparent;
+                border: 2px solid orange;
+                font-weight: bold;
+                transition: all .3s;
+        
+                &:hover {
+                    background-color: orange;
+                    color: white;
+                }
+            }
+
+            .btn-delete-now {
+                background-color: transparent;
+                border: 2px solid tomato;
+                font-weight: bold;
+                transition: all .3s;
+
+                &:hover {
+                    background-color: tomato;
+                    color: white;
+                }
+            }
+        }
+
+        .filter-users{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+
+            @media (max-width:416px) {
+                justify-content: center;
+
+                .status-filter{
+                    margin-top: 1rem;
+                }
+            }
+        }
+        .search-field{
+            display: flex;
+        }
+
+        .btn-search {
+            @extend %btn-search;
+        }
+
+        .notfoud-nia{
+            font-size: 1.7rem;
+            font-weight: bold;
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .tabs-controls{
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1rem;
+            gap: 1rem;
+
+            .btn-tab-manage-user,
+            .btn-tab-manage-org,
+            .btn-tab-manage-app,
+            .btn-tab-manage-benef,
+            .btn-tab-manage-me,
+            .btn-tab-list-entity{
+                @extend %link-action;
+
+                &.active{
+                    background-color: orange;
+                    color: white;
+                }
+            }
+        }
+
+        .list-users,
+        .list-users-from-csu,
+        .list-nias-notfound{
+            height: 210px;
+            overflow-y: auto;
+            padding-top: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+
+            .user-item{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border: 2px solid rgba(128, 128, 128, 0.485);
+                background-color: whitesmoke;
+                border-radius: 10px;
+                padding: .5rem;
+                flex-wrap: wrap;
+
+                &.hover-efect:hover{
+                    cursor: pointer;
+                }
+
+                @media (max-width:416px) {
+                    justify-content: center;
+                }
+            }
+
+            .user-info{
+                display: flex;
+                flex-direction: column;
+
+                &.csu-agg {
+                   gap: 1rem; 
+                }
+            }
+            
+            .user-email{
+                font-size: 1.4rem;
+                font-weight: bold;
+                margin-bottom: .4rem;
+            }
+
+            .user-actions{
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+
+                .fa-solid{
+                    font-size: 1.6rem;
+                }
+
+                .btn{
+                    background-color: transparent;
+                    color: rgb(87, 87, 87);
+                    border: 2px solid gainsboro;
+
+                    &.delete-user,
+                    &.delete-user-org {
+                        color: tomato;
+                    }
+                }
+            }
+
+            .user-status,
+            .user-status-org{
+                display: flex;
+                flex-direction: column;
+                gap: .4rem;
+                align-items: center;
+
+                .badge{
+                    @extend %badge-default;
+                    font-size: 1.2rem;
+                    padding: .2rem .3rem;
+                    color: white;
+                    &.badge-active{
+                        background-color: rgb(30, 194, 30);
+                        &::after{
+                            content: "activo";
+                        }
+                    }
+                    &.badge-blocked {
+                        background-color: tomato;
+                        &::after {
+                            content: "bloqueado";
+                        }
+                    }
+                }
+            }
+        }
+
+        .grant-access-container .list-users{
+            height: fit-content;
+        }
+
+        .manage-org-visibility,
+        .manage-app-visibility,
+        .manage-benef-visibility{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .btn.delete-org,
+            .btn.delete-app,
+            .btn.delete-benef{
+                background-color: transparent;
+                border: 2px solid tomato;
+                color: tomato;
+                padding: .5rem;
+                font-weight: bold;
+                font-size: 1.3rem;
+                border-radius: 1rem;
+            }
+        }
+        .org-status,
+        .app-status,
+        .benef-status {
+            display: flex;
+            gap: .4rem;
+            justify-content: center;
+
+            .badge {
+                @extend %badge-default;
+                font-size: 1.2rem;
+                padding: .2rem .3rem;
+                color: white;
+
+                &.badge-active {
+                    background-color: rgb(30, 194, 30);
+
+                    &::after {
+                        content: "activo";
+                    }
+                }
+
+                &.badge-blocked {
+                    background-color: tomato;
+
+                    &::after {
+                        content: "Privado";
+                    }
+                }
+            }
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+
+            .page-item{
+                font-size: 1.5rem;
+                font-weight: bold;
+                border: 2px solid rgb(167, 167, 167);
+                padding: .5rem;
+                min-width: 36px;
+                text-align: center;
+                cursor: pointer;
+
+                &.active{
+                    background-color: rgb(167, 167, 167);
+                    color: white;
+                }
+            }
+        }
+
+        .form-create-user .form-body{
+            height: 290px;
+            overflow-y: auto;
+        }
+
+        .form-update-org-key,
+        .form-search-users-l3,
+        .form-search-nia{
+            .input-inline{
+                display: flex;
+
+                input{
+                    flex-grow: 1;
+                }
+
+                .btn-refresh-org-key,
+                .btn-search-user-l3,
+                .btn-search-nia{
+                    border-radius: 0;
+                    background-color: #009dff;
+                    border-color: #009dff;
+                    color: white;
+                    margin-top: 0;
+                    padding-top: 1rem;
+                    padding-bottom: 1rem;
+                }
+            }
+        }
+    }
+
+    &.modal-new-csu-request{
+        width: 515px;
+    }
+
+    &.modal-send-feedback{
+        .label-inst {
+            font-size: 1.3rem;
+            display: block;
+            margin-top: .5rem;
+            margin-bottom: .5rem;
+            font-weight: bold;
+        }
+    }
+
+    &.modal-manage-organization,
+    &.modal-send-feedback,
+    &.modal-manage-application,
+    &.modal-manage-benefit{
+        width: 506px;
+
+        .form-update-org-key{
+            input{
+                @media (max-width:420px) {
+                    font-size: 1.2rem;
+                }
+            }
+
+            .input-inline{
+                @media (max-width:370px) {
+                    flex-direction: column;
+                    gap: 1rem;
+
+                    .btn-refresh-org-key{
+                        width: 100%;
+                    }
+                }
+            }
+        }
+
+        .form-search-users-l3,
+        .form-search-nia{
+            .input-inline {
+                @media (max-width:370px) {
+                    flex-direction: column;
+                    gap: 1rem;
+        
+                    .btn-search-user-l3,
+                    .btn-search-nia {
+                        width: 100%;
+                        margin-bottom: 1rem;
+                    }
+                }
+            }
+        }
+
+        .form-grant-user-access,
+        .form-edit-user-level-access{
+            @media (max-width:330px) {
+                .btn {
+                    width: 100%;
+                }
+            }
+        }
+
+        @media (max-width:550px) {
+            width: 90%;
+    
+            .inline-control {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width:417px) {
+            .filter-users {
+                flex-direction: column;
+                gap: .5rem;
+                &>*,
+                .form-control{
+                    width: 100%;
+                }
+
+                .status-filter{
+                    margin-top: 0;
+                }
+            }
+        }
+
+        @media (max-width:400px) {
+            .btn-save-pass {
+                width: 100%;
+            }
+        }
+
+        @media (max-width:300px) {
+            .tabs-controls .btn-tab-modal{
+                font-size: 1.1rem;
+            }
+
+            .manage-org-visibility .btn.delete-org,
+            .manage-app-visibility .btn.delete-org,
+            .manage-benef-visibility .btn.delete-benef{
+                font-size: 1.1rem;
+            }
+        }
+
+    }
+
+    &.modal-create-organization{
+        width: 280px;
+
+        &.show {
+            top: 15rem;
+        }
+    
+        @media (max-width:300px) {
+            width: 90%;
+    
+            .inline-control {
+                flex-direction: column;
+            }
+        }
+    }
+
+    &.modal-search-entities{
+        .tabs-controls{
+            margin-top: 1rem;
+        }
+    }
+
+    &.modal-search-benefi-by-nia,
+    &.modal-new-csu-request,
+    &.modal-search-entities{
+        .search-by-nia,
+        .filter-container{
+            display: flex;
+            justify-content: flex-end;
+            padding-right: .5rem;
+        }
+
+
+        .search-by-doc{
+            justify-content: center;
+            gap: 1rem
+        }
+
+        .btn-search {
+            @extend %btn-search;
+        }
+
+        .list-from-csu,
+        .list-from{
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1rem;
+            height: 230px;
+            overflow-y: auto;
+            padding-right: .5rem;
+            position: relative;
+        }
+
+        .label-pre-info{
+            font-size: 1.7rem;
+            font-weight: bold;
+            width: 330px;
+            text-align: center;
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            background-color: gainsboro;
+            padding: .5rem;
+            border-radius: 10px;
+            color: rgba(47, 47, 47, 0.763);
+        }
+
+        .card-requester,
+        .card-entity {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            cursor: pointer;
+            border: 2px solid rgba(128, 128, 128, 0.485);
+            padding: 1rem;
+            background-color: whitesmoke;
+            border-radius: 10px;
+
+            .label-name,
+            .entity-name{
+                font-size: 1.6rem;
+                font-weight: bold;
+            }
+
+            .entity-info{
+                font-size: 1.4rem;
+                display: flex;
+                justify-content: space-between;
+                margin-top: 1rem;
+            }
+
+            .container-detail{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-wrap: wrap;
+            }
+
+            .requester-info{
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+            }
+
+            .container-info{
+                font-size: 1.14rem;
+            }
+        
+            &.selected {
+                border-color: goldenrod;
+            }
+
+            .badge {
+                @extend %badge-default;
+                color: whitesmoke;
+                text-align: center;
+
+                &.g1 {
+                    background-color: tomato;
+                }
+
+                &.g2 {
+                    background-color: #FFAA00;
+                }
+
+                &.g3 {
+                    background-color: #FFFF00;
+                    color: grey;
+                }
+
+                &.g4 {
+                    background-color: #005CE6;
+                }
+            }
+        }
+    }
+
+    &.modal-update-solicitation-docs{
+        .documents-list{
+            height: 200px;
+            overflow-y: auto;
+            padding-top: 1.5rem;
+        }
+    }
+
+    .loader {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(255, 255, 255, 0.527);
+        z-index: 2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include lds-ellipsis;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: .3rem;
+
+        label {
+            font-size: 1.5rem;
+            margin-bottom: .5rem;
+            margin-top: 1.5rem;
+            font-weight: bold;
+        }
+    }
+
+    .form-control {
+        @extend %form-control;
+    }
+
+    .inline-control {
+        display: flex;
+        gap: 1rem;
+
+        &>* {
+            flex-grow: 1;
+        }
+    }
+
+    [type="submit"]{
+        @extend %btn-action;
+        border-color: green;
+        color: green;
+        margin-top: 1rem;
+
+        &:hover{
+            background-color: green;
+        }
+    }
+
+    [type="reset"]{
+        margin-top: 1rem;
+        @extend %btn-action;
+    }
+}
