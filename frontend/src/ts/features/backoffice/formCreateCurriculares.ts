@@ -82,13 +82,13 @@ export function actionListCurricularesContainer(){
 function actionCreateUC(){
     let formData = new FormData(formCreateCurriculares);
 
-    let nomeUC = (formData.get("nome-curriculares") as string).trim();
+    let nomeUC = (formData.get("nome_curriculares") as string).trim();
     let faculdadeUC = (formData.get("faculdade") as string).trim();
 
     let formHasError = false;
 
     if(!nomeUC){
-        displayErrorsFeedback({"nome-curriculares":"Campo obrigatório"},formCreateCurriculares!);
+        displayErrorsFeedback({"nome_curriculares":"Campo obrigatório"},formCreateCurriculares!);
         formHasError=true;
     }
 
@@ -116,13 +116,13 @@ function actionCreateUC(){
 function actionUpdateUC(){
     let formData = new FormData(formCreateCurriculares);
 
-    let nomeUC = (formData.get("nome-curriculares") as string).trim();
+    let nomeUC = (formData.get("nome_curriculares") as string).trim();
     let faculdadeUC = (formData.get("faculdade") as string).trim();
 
     let formHasError = false;
 
     if(!nomeUC){
-        displayErrorsFeedback({"nome-curriculares":"Campo obrigatório"},formCreateCurriculares!);
+        displayErrorsFeedback({"nome_curriculares":"Campo obrigatório"},formCreateCurriculares!);
         formHasError=true;
     }
 
@@ -148,8 +148,8 @@ function actionUpdateUC(){
 }
 
 function loadFormUpdateUC(idUC:string,nomeUC:string,faculdadeUC:string){
-    let idUCInput = formCreateCurriculares.querySelector<HTMLInputElement>(`[name="id-uc"]`);
-    let nomeUCInput = formCreateCurriculares.querySelector<HTMLInputElement>(`[name="nome-curriculares"]`);
+    let idUCInput = formCreateCurriculares.querySelector<HTMLInputElement>(`[name="id_uc"]`);
+    let nomeUCInput = formCreateCurriculares.querySelector<HTMLInputElement>(`[name="nome_curriculares"]`);
     let faculdadeUCInput = formCreateCurriculares.querySelector<HTMLInputElement>(`[name="faculdade"]`);
 
 

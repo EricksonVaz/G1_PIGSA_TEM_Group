@@ -5,10 +5,10 @@ dotenv.config();
 const {
   DB_HOST = "127.0.0.1",
   DB_PORT = "3306",
-  DB_NAME = "isi_alunos_livros_biblioteca",
+  DB_NAME = "pigsa",
   DB_USER = "root",
   DB_PASS = "",
-  DB_DIALECT = "mariadb"
+  DB_DIALECT = "mysql"
 } = process.env;
 
 export const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASS, {

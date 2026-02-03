@@ -1,37 +1,40 @@
-import express from "express";
-import cors from "cors";
-import helmet from "helmet";
-import morgan from "morgan";
-import dotenv from "dotenv";
-import { testConnection } from "./db/sequelize";
-import apiRouter from "./routers/api.router";
+import * as dotenv from 'dotenv' // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
+import express, { NextFunction, Request, Response } from "express";
+import cors  from 'cors';
+import apiRouter from './routers/api.router';
 
 dotenv.config();
-
+const port = process.env.PORT || 3000;
 const app = express();
-app.use(express.json());
-app.use(cors());
-app.use(helmet());
-app.use(morgan("dev"));
 
-app.use("/api", apiRouter);
 
-// Middleware de erros (centraliza mensagens de SIGNAL das SPs)
-app.use((err: any, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
-  const msg = err?.original?.sqlMessage || err?.message || "Erro interno";
-  const status = msg?.toLowerCase()?.includes("não encontrado") ? 404 :
-                 msg?.toLowerCase()?.includes("ativo") ? 409 : 400;
-  res.status(status).json({ error: true, message: msg });
+app.use(cors({
+  origin: '*',
+  credentials:true
+}));
+
+app.use(express.static('public'));
+app.use(express.urlencoded({extended:true,limit:'50mb'}));
+app.use(express.json({limit: '50mb'}));
+app.use((err:any, req:Request, res:Response, next:NextFunction) => {
+    // This check makes sure this is a JSON parsing issue, but it might be
+    // coming from any middleware, not just body-parser:
+
+    if (err instanceof SyntaxError && (err as any).status === 400 && 'body' in err) {
+        console.error(err);
+        return res.status(400).json(
+            {
+                status:400,
+                message:"Dados Submetidos invalido"
+            }
+        )
+    }
+
+    next();
 });
 
-const PORT = Number(process.env.PORT || 3000);
+app.use("/pigsa-api",apiRouter);
 
-(async () => {
-  try {
-    await testConnection();
-    app.listen(PORT, () => console.log(`API ON http://localhost:${PORT}`));
-  } catch (e) {
-    console.error("Falha na conexão com a base:", e);
-    process.exit(1);
-  }
-})();
+
+const server = app.listen(port,()=>console.log(`servidor rodando na porta ${port}`));
+server.setTimeout(480000);
