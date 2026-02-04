@@ -13,6 +13,7 @@ export class UpdateUnidadesCurricularesForms {
         if("nome_curriculares" in fields && "faculdade" in fields){
             this.nome_curriculares = ((fields?.nome_curriculares as unknown) as string)?.trim() ?? "";
             this.faculdade = ((fields?.faculdade as unknown) as string)?.trim() ?? "";
+            this.uuid = uuid;
             this.validateForm();
         }else{
             this.formErrorFeedBack = [
@@ -77,24 +78,24 @@ export class UpdateUnidadesCurricularesForms {
             }
         }
 
-        let ucCreated = await UnidadesCurriculares.createNew({
+        let ucCreated = await UnidadesCurriculares.updateUC({
+            UUID:this.uuid,
             Nome:this.nome_curriculares,
             Faculdade:this.faculdade
         });
 
-        if(typeof ucCreated=="object" && ("ID" in ucCreated)){
+        if(ucCreated){
             
             return {
                 status:200,
-                message:"Unidade curricular criada com sucesso",
-                result:[ucCreated]
+                message:"Unidade curricular atualizada com sucesso",
             }
         }
 
         return {
             status:500,
             message:"Internal Server Error",
-            error:new Error("Não foi possivel criar este novo beneficio")
+            error:new Error("Não foi possivel atualizar a unidade curricular")
         }
     }
 }

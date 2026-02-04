@@ -3,6 +3,8 @@ import { sequelize } from "../db/sequelize";
 import { UnidadesCurriculares } from "../models/UnidadesCurriculares";
 import { handleForm as formHandle } from "../utils/handleForm";
 import { CreateUnidadesCurricularesForms } from "../models/forms/CreateUnidadesCurricularesForms";
+import { UpdateUnidadesCurricularesForms } from "../models/forms/UpdateUnidadesCurricularesForms";
+import { IResponseJSON } from "../models/interfaces/IResponseJSON";
 
 export class UnidadesCurricularesController {
   static async listAll(req: Request, res: Response, next: NextFunction){
@@ -59,27 +61,27 @@ export class UnidadesCurricularesController {
       let formPostData = await formHandle(req);
       let {fields,files} = formPostData;
 
-      let uuid = (req?.params?.id ?? "").trim();
+      let uuid = (req?.params?.uuid ?? "").trim();
 
-      console.log("fields",fields);
-      let ucCreateModel = new CreateUnidadesCurricularesForms(fields);
-      await ucCreateModel.validateForm();
-      let formValidity = ucCreateModel.checkValidity();
+      console.log("fields",fields,uuid);
+      let ucUpdateModel = new UpdateUnidadesCurricularesForms(uuid,fields);
+      await ucUpdateModel.validateForm();
+      let formValidity = ucUpdateModel.checkValidity();
 
       if(formValidity?.length){
-          return res.status(400).json(
-              {
-                  status:400,
-                  message:"Erro no formulário",
-                  errorFeedback:formValidity
-              }
-          )
+        return res.status(400).json(
+          {
+            status:400,
+            message:"Erro no formulário",
+            errorFeedback:formValidity
+          }
+        )
       }else{
-          let postRequestResponse = await ucCreateModel.post();
-          let {status} = postRequestResponse;
-          return res.status(status).json(
-              postRequestResponse
-          );
+        let postRequestResponse = await ucUpdateModel.post();
+        let {status} = postRequestResponse;
+        return res.status(status).json(
+          postRequestResponse
+        );
       }
     } catch (error) {
       res.status(500);
@@ -89,6 +91,39 @@ export class UnidadesCurricularesController {
 
   static async remover(req: Request, res: Response, next: NextFunction) {
     try {
+      let uuid = (req?.params?.uuid ?? "").trim();
+
+      let responseDeleteUC = await UnidadesCurriculares.deleteUC(uuid);
+      let responseJSON:IResponseJSON|undefined;
+
+      if(typeof responseDeleteUC == "string"){
+        responseJSON = {
+          status:400,
+          message:"ID Unidade Curricular Inválida",
+          errorFeedback:[
+            {
+              formControll:"ID Unidade",
+              feedbackMSG:"Curricular Inválida"
+            }
+          ]
+        }
+      }else if(typeof responseDeleteUC == "number" && responseDeleteUC>0){
+        responseJSON = {
+          status:200,
+          message:"Unidade curricular eliminada com sucesso",
+        }
+      }else{
+        responseJSON = {
+          status:500,
+          message:"Internal Server Error",
+          error:new Error("Não foi possivel atualizar a unidade curricular")
+        }
+      }
+
+      let {status} = responseJSON;
+      return res.status(status).json(
+        responseJSON
+      );
       
     } catch (error) {
       res.status(500);

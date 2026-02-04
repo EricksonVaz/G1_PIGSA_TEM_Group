@@ -7,10 +7,10 @@ export interface alunosAttributes {
   ID: number;
   UUID: string;
   Nome: string;
-  CodigoAcesso: number;
-  Email: string;
-  Phone: string;
-  Password: string;
+  CodigoAcesso?: string;
+  Email?: string;
+  Phone?: string;
+  Password?: string;
   DocID: string;
   NIF: number;
   Pai: string;
@@ -23,17 +23,17 @@ export interface alunosAttributes {
 
 export type alunosPk = "ID";
 export type alunosId = alunos[alunosPk];
-export type alunosOptionalAttributes = "ID" | "CreationDate" | "UpdateDate" | "status";
+export type alunosOptionalAttributes = "ID" | "CodigoAcesso" | "Email" | "Phone" | "Password" | "CreationDate" | "UpdateDate" | "status";
 export type alunosCreationAttributes = Optional<alunosAttributes, alunosOptionalAttributes>;
 
 export class alunos extends Model<alunosAttributes, alunosCreationAttributes> implements alunosAttributes {
   ID!: number;
   UUID!: string;
   Nome!: string;
-  CodigoAcesso!: number;
-  Email!: string;
-  Phone!: string;
-  Password!: string;
+  CodigoAcesso?: string;
+  Email?: string;
+  Phone?: string;
+  Password?: string;
   DocID!: string;
   NIF!: number;
   Pai!: string;
@@ -86,21 +86,21 @@ export class alunos extends Model<alunosAttributes, alunosCreationAttributes> im
       allowNull: false
     },
     CodigoAcesso: {
-      type: DataTypes.SMALLINT.UNSIGNED,
-      allowNull: false,
+      type: DataTypes.CHAR(6),
+      allowNull: true,
       unique: "CodigoAcesso"
     },
     Email: {
       type: DataTypes.CHAR(30),
-      allowNull: false
+      allowNull: true
     },
     Phone: {
       type: DataTypes.CHAR(20),
-      allowNull: false
+      allowNull: true
     },
     Password: {
-      type: DataTypes.CHAR(12),
-      allowNull: false
+      type: DataTypes.CHAR(120),
+      allowNull: true
     },
     DocID: {
       type: DataTypes.CHAR(30),

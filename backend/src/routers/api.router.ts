@@ -1,5 +1,7 @@
 import { Router } from "express";
 import { UnidadesCurricularesController } from "../controllers/UnidadesCurricularesController";
+import { CursosController } from "../controllers/CursosController";
+import { AlunosController } from "../controllers/AlunosController";
 import { authenticateToken } from "../middleware/authenticateToken";
 
 export const apiRouter = Router();
@@ -7,25 +9,26 @@ export const apiRouter = Router();
 /** Gestão Unidade Curriculares */
 apiRouter.get("/unidades-list", UnidadesCurricularesController.listAll);
 apiRouter.post("/unidades", UnidadesCurricularesController.adicionar);
-apiRouter.put("/unidades/:id", UnidadesCurricularesController.editar);
-apiRouter.delete("/unidades/:id", UnidadesCurricularesController.remover);
+apiRouter.put("/unidades/:uuid", UnidadesCurricularesController.editar);
+apiRouter.delete("/unidades/:uuid", UnidadesCurricularesController.remover);
 
 /** Gestão Cursos */
-// apiRouter.get("/cursos-list", LivroController.adicionar);
-// apiRouter.post("/cursos", LivroController.adicionar);
-// apiRouter.put("/cursos/:id", LivroController.editar);
-// apiRouter.delete("/cursos/:id", LivroController.remover);
-// apiRouter.post("/cursos/:id/add-disciplinas", LivroController.disponibilidade);
-// apiRouter.delete("/cursos/:id/remove-disciplinas", LivroController.disponibilidade);
+apiRouter.get("/cursos-list", CursosController.listAll);
+apiRouter.post("/cursos", CursosController.adicionar);
+apiRouter.put("/cursos/:uuid", CursosController.editar);
+apiRouter.delete("/cursos/:uuid", CursosController.remover);
+apiRouter.post("/cursos/:uuid/add-disciplinas", CursosController.adicionarUCEmCursos);
+apiRouter.delete("/cursos/:uuid/remove-disciplinas", CursosController.removerUCEmCursos);
 
 /** Gestão Alunos */
-// apiRouter.post("/alunos/create-acesss", LivroController.adicionar);
-// apiRouter.post("/alunos/add-contacto-info", LivroController.adicionar);
+apiRouter.post("/alunos/register-info", AlunosController.registerInfo);
+apiRouter.delete("/alunos/:uuid", AlunosController.removeAluno);
+apiRouter.put("/alunos/create-access/:uuid", AlunosController.createAccess);
+apiRouter.put("/alunos/add-contacto-info/:uuid", AlunosController.addContactInfo);
+/**FIM Gestão Alunos */
 
 /** Gestão Matriculas */
 // apiRouter.get("/matriculas-list", LivroController.adicionar);
-// apiRouter.post("/matriculas/register-aluno", LivroController.adicionar);
-// apiRouter.delete("/matriculas/remove-aluno/:id", LivroController.remover);
 // apiRouter.post("/matriculas/add-aluno-semestre", LivroController.adicionar);
 // apiRouter.delete("/matriculas/remove-aluno-semestre/:id", LivroController.adicionar);
 

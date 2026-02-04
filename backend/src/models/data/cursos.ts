@@ -8,6 +8,7 @@ export interface cursosAttributes {
   UUID: string;
   Nome: string;
   Grau: string;
+  Faculdade: string;
   Semestre: number;
   CreationDate: Date;
   UpdateDate?: Date;
@@ -24,6 +25,7 @@ export class cursos extends Model<cursosAttributes, cursosCreationAttributes> im
   UUID!: string;
   Nome!: string;
   Grau!: string;
+  Faculdade!: string;
   Semestre!: number;
   CreationDate!: Date;
   UpdateDate?: Date;
@@ -71,6 +73,10 @@ export class cursos extends Model<cursosAttributes, cursosCreationAttributes> im
       allowNull: false
     },
     Grau: {
+      type: DataTypes.CHAR(30),
+      allowNull: false
+    },
+    Faculdade: {
       type: DataTypes.CHAR(30),
       allowNull: false
     },

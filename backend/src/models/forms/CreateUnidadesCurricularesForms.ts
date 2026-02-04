@@ -70,7 +70,7 @@ export class CreateUnidadesCurricularesForms {
         if(typeof ucCreated=="object" && ("ID" in ucCreated)){
             
             return {
-                status:200,
+                status:201,
                 message:"Unidade curricular criada com sucesso",
                 result:[ucCreated]
             }
@@ -79,7 +79,7 @@ export class CreateUnidadesCurricularesForms {
         return {
             status:500,
             message:"Internal Server Error",
-            error:new Error("Não foi possivel criar este novo beneficio")
+            error:new Error("Não foi possivel criar a unidade curricular")
         }
     }
 }
