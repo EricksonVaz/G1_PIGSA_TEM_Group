@@ -63,7 +63,7 @@ export class notas extends Model<notasAttributes, notasCreationAttributes> imple
       }
     },
     Nota: {
-      type: DataTypes.DECIMAL(3,3),
+      type: DataTypes.DECIMAL(4,2),
       allowNull: false
     },
     StatusDisciplina: {

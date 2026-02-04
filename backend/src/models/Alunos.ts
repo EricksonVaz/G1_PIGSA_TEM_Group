@@ -8,6 +8,7 @@ export interface ICreateAlunoInitial {
   NIF: number;
   Pai: string;
   Mae: string;
+  DataNascimento: string;
   Endereco: string;
 }
 
@@ -56,8 +57,25 @@ export class Alunos extends alunos {
     return rows as alunosAttributes[];
   }
 
+  static async findByCodigoAcessoWithPassword(codigoAcesso: string) {
+    const [rows] = await sequelize.query(
+      "SELECT ID, UUID, Nome, CodigoAcesso, Password FROM `alunos` WHERE status = 1 AND CodigoAcesso = :codigoAcesso;",
+      { replacements: { codigoAcesso } }
+    );
+
+    return rows as alunosAttributes[];
+  }
+
+  static async getAllMatriculados() {
+    const [rows] = await sequelize.query(
+      "SELECT a.UUID AS ID, a.Nome, a.NIF, a.DataNascimento, COUNT(m.ID) AS matriculado FROM `alunos` a LEFT JOIN `matriculas` m ON m.ID_Aluno = a.ID AND m.status = 1 WHERE a.status = 1 GROUP BY a.ID, a.UUID, a.Nome, a.NIF, a.DataNascimento ORDER BY a.CreationDate DESC;"
+    );
+
+    return rows as alunosAttributes[];
+  }
+
   static async createInitial(objToSave: ICreateAlunoInitial) {
-    const { Nome, DocID, NIF, Pai, Mae, Endereco } = objToSave;
+    const { Nome, DocID, NIF, Pai, Mae, DataNascimento, Endereco } = objToSave;
 
     let UUID = randomUUID();
 
@@ -68,6 +86,7 @@ export class Alunos extends alunos {
       NIF,
       Pai,
       Mae,
+      DataNascimento,
       Endereco,
       status: 1,
     });

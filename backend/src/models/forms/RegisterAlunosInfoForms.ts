@@ -43,6 +43,13 @@ export class RegisterAlunosInfoForms {
     return date;
   }
 
+  private toDateOnlyString(date: Date) {
+    const yyyy = date.getFullYear();
+    const mm = String(date.getMonth() + 1).padStart(2, "0");
+    const dd = String(date.getDate()).padStart(2, "0");
+    return `${yyyy}-${mm}-${dd}`;
+  }
+
   private getAge(date: Date) {
     const now = new Date();
     let age = now.getFullYear() - date.getFullYear();
@@ -175,6 +182,7 @@ export class RegisterAlunosInfoForms {
       this.nomeCompleto,
       this.dataNascimento
     );
+    
     const person = cneResponse?.data?.result?.person;
     if (!cneResponse?.success || !person) {
       return {
@@ -193,6 +201,9 @@ export class RegisterAlunosInfoForms {
     const docId = (person?.identificacao ?? "").trim();
     const pai = (person?.nome_pai ?? "Nao informado").trim();
     const mae = (person?.nome_mae ?? "Nao informado").trim();
+    const rawDataNascimento = (person?.data_nascimento ?? this.dataNascimento).trim();
+    const parsedDate = this.parseDate(rawDataNascimento);
+    const dataNascimento = parsedDate ? this.toDateOnlyString(parsedDate) : rawDataNascimento;
     const enderecoParts = [
       person?.local_voto,
       person?.concelho,
@@ -207,6 +218,7 @@ export class RegisterAlunosInfoForms {
       NIF: nifNumber,
       Pai: pai || "Nao informado",
       Mae: mae || "Nao informado",
+      DataNascimento: dataNascimento,
       Endereco: endereco,
     });
 

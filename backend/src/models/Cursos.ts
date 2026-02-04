@@ -18,11 +18,44 @@ export class Cursos extends cursos {
   }
 
   static async getAll() {
-    const [rows] = await sequelize.query(
-      "SELECT UUID AS ID, Nome, Grau, Faculdade, Semestre FROM `cursos` WHERE status = 1 ORDER BY CreationDate DESC;"
+    const [cursoRows] = await sequelize.query(
+      "SELECT ID, UUID AS UUID, Nome, Grau, Faculdade, Semestre FROM `cursos` WHERE status = 1 ORDER BY CreationDate DESC;"
     );
 
-    return rows as cursosAttributes[];
+    const cursosList = cursoRows as any[];
+    if (!cursosList.length) {
+      return [];
+    }
+
+    const cursoIds = cursosList.map((c) => Number(c.ID));
+
+    const [disciplinaRows] = await sequelize.query(
+      "SELECT d.ID, d.ID_Curso, d.Semestre, uc.Nome AS NomeDisciplina FROM `disciplinas` d INNER JOIN `unidades_curriculares` uc ON uc.ID = d.ID_UC WHERE d.ID_Curso IN (:cursoIds) ORDER BY d.Semestre ASC, uc.Nome ASC;",
+      { replacements: { cursoIds } }
+    );
+
+    const disciplinas = disciplinaRows as any[];
+    const disciplinasMap = new Map<number, any[]>();
+    disciplinas.forEach((d) => {
+      const cursoId = Number(d.ID_Curso);
+      if (!disciplinasMap.has(cursoId)) {
+        disciplinasMap.set(cursoId, []);
+      }
+      disciplinasMap.get(cursoId)!.push({
+        ID_Disciplina: Number(d.ID),
+        Semestre: Number(d.Semestre),
+        Nome: d.NomeDisciplina,
+      });
+    });
+
+    return cursosList.map((curso) => ({
+      ID: curso.UUID,
+      Nome: curso.Nome,
+      Grau: curso.Grau,
+      Faculdade: curso.Faculdade,
+      Semestre: curso.Semestre,
+      Disciplinas: disciplinasMap.get(Number(curso.ID)) ?? [],
+    }));
   }
 
   static async findByNomeGrauSemestre(

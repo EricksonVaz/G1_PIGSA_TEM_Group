@@ -1,6 +1,6 @@
 import  jwt from 'jsonwebtoken';
 import { NextFunction, Request as TRequest, Response as TResponse } from "express";
-import { privateKey } from './handleJWT';
+import { privateKey } from '../utils/handleJWT';
 
 export function authenticateToken(req:TRequest, res:TResponse, next:NextFunction){
     const authHeader = req.headers['authorization'];

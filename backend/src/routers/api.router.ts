@@ -2,6 +2,9 @@ import { Router } from "express";
 import { UnidadesCurricularesController } from "../controllers/UnidadesCurricularesController";
 import { CursosController } from "../controllers/CursosController";
 import { AlunosController } from "../controllers/AlunosController";
+import { MatriculasController } from "../controllers/MatriculasController";
+import { NotasController } from "../controllers/NotasController";
+import { AuthController } from "../controllers/AuthController";
 import { authenticateToken } from "../middleware/authenticateToken";
 
 export const apiRouter = Router();
@@ -21,6 +24,7 @@ apiRouter.post("/cursos/:uuid/add-disciplinas", CursosController.adicionarUCEmCu
 apiRouter.delete("/cursos/:uuid/remove-disciplinas", CursosController.removerUCEmCursos);
 
 /** Gestão Alunos */
+apiRouter.get("/alunos/list-matriculados", AlunosController.allMatriculados);
 apiRouter.post("/alunos/register-info", AlunosController.registerInfo);
 apiRouter.delete("/alunos/:uuid", AlunosController.removeAluno);
 apiRouter.put("/alunos/create-access/:uuid", AlunosController.createAccess);
@@ -28,21 +32,23 @@ apiRouter.put("/alunos/add-contacto-info/:uuid", AlunosController.addContactInfo
 /**FIM Gestão Alunos */
 
 /** Gestão Matriculas */
-// apiRouter.get("/matriculas-list", LivroController.adicionar);
-// apiRouter.post("/matriculas/add-aluno-semestre", LivroController.adicionar);
-// apiRouter.delete("/matriculas/remove-aluno-semestre/:id", LivroController.adicionar);
+apiRouter.post("/matriculas/add-aluno-semestre", MatriculasController.addAlunosSemestre);
+apiRouter.delete("/matriculas/remove-aluno-semestre/:idMatricula", MatriculasController.removeAlunosSemestre);
+/**FIM Gestão Matriculas */
 
 /** Publicar Notas */
-// apiRouter.get("/notas/list-matriculas", EmprestimoController.registar);
-// apiRouter.post("/notas/publicar", EmprestimoController.registar);
+apiRouter.get("/notas/list-matriculas/:filterCursos", NotasController.listarAlunos);
+apiRouter.post("/notas/publicar", NotasController.registar);
+apiRouter.delete("/notas/publicar/:idNota", NotasController.apagarNota);
+/** FIM Publicar Notas */
 
 /** Autenticação */
-// apiRouter.post("/auth/login", EmprestimoController.registar);
+apiRouter.post("/auth/login", AuthController.loginAlunos);
 
-// apiRouter.use(authenticateToken);
+apiRouter.use(authenticateToken);
 
-// apiRouter.put("/user/update-contact-info", LivroController.adicionar);
-// apiRouter.put("/user/update-password", LivroController.adicionar);
+// apiRouter.put("/user/update-contact-info", UserController.updateContactInfo);
+// apiRouter.put("/user/update-password", UserController.updatePassword);
 
 // apiRouter.get("/user/list-cursos", LivroController.adicionar);
 // apiRouter.get("/user/list-notas/:curso", LivroController.adicionar);

@@ -124,4 +124,19 @@ export class AlunosController {
       return res.json({ status: 500, message: "Internal Server Error", error: error });
     }
   }
+
+  static async allMatriculados(req: Request, res: Response, next: NextFunction) {
+    try {
+      let alunosList = await Alunos.getAllMatriculados();
+
+      return res.status(200).json({
+        status: 200,
+        message: "Alunos encontrados",
+        result: alunosList,
+      });
+    } catch (error) {
+      res.status(500);
+      return res.json({ status: 500, message: "Internal Server Error", error: error });
+    }
+  }
 }

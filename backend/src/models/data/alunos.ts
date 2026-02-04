@@ -15,6 +15,7 @@ export interface alunosAttributes {
   NIF: number;
   Pai: string;
   Mae: string;
+  DataNascimento: string;
   Endereco: string;
   CreationDate: Date;
   UpdateDate?: Date;
@@ -38,6 +39,7 @@ export class alunos extends Model<alunosAttributes, alunosCreationAttributes> im
   NIF!: number;
   Pai!: string;
   Mae!: string;
+  DataNascimento!: string;
   Endereco!: string;
   CreationDate!: Date;
   UpdateDate?: Date;
@@ -116,6 +118,10 @@ export class alunos extends Model<alunosAttributes, alunosCreationAttributes> im
     },
     Mae: {
       type: DataTypes.CHAR(100),
+      allowNull: false
+    },
+    DataNascimento: {
+      type: DataTypes.DATEONLY,
       allowNull: false
     },
     Endereco: {
