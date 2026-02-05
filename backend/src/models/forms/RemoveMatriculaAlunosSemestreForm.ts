@@ -1,5 +1,6 @@
 import { IFormErrorFeedback } from "../interfaces/IFormErrorFeedback";
 import { Matriculas } from "../Matriculas";
+import { Propinas } from "../Propinas";
 
 export class RemoveMatriculaAlunosSemestreForm {
   private idMatricula: number = 0;
@@ -39,6 +40,7 @@ export class RemoveMatriculaAlunosSemestreForm {
     let deletedCount = await Matriculas.softDeleteById(this.idMatricula);
 
     if (deletedCount && deletedCount > 0) {
+      await Propinas.softDeleteByMatriculaId(this.idMatricula);
       return {
         status: 200,
         message: "Matricula removida com sucesso",

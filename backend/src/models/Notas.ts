@@ -174,4 +174,13 @@ export class Notas extends notas {
       result,
     };
   }
+
+  static async listNotasPublicadasByAlunoCurso(idAluno: number, uuidCurso: string) {
+    const [rows] = await sequelize.query(
+      "SELECT d.Semestre AS Semestre, uc.Nome AS NomeDisciplina, n.Nota AS Nota, n.StatusDisciplina AS StatusDisciplina FROM `notas` n INNER JOIN `matriculas` m ON m.ID = n.ID_Matricula INNER JOIN `disciplinas` d ON d.ID = n.ID_Disciplina INNER JOIN `unidades_curriculares` uc ON uc.ID = d.ID_UC INNER JOIN `cursos` c ON c.ID = m.ID_Curso INNER JOIN `alunos` a ON a.ID = m.ID_Aluno WHERE n.status = 1 AND m.status = 1 AND c.status = 1 AND a.status = 1 AND uc.status = 1 AND m.ID_Aluno = :idAluno AND c.UUID = :uuidCurso ORDER BY d.Semestre ASC, uc.Nome ASC;",
+      { replacements: { idAluno, uuidCurso } }
+    );
+
+    return rows as any[];
+  }
 }

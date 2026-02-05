@@ -10,11 +10,13 @@ export interface propinasAttributes {
   Montante: number;
   Referencia: string;
   CreationDate: Date;
+  UpdateDate?: Date;
+  status: number;
 }
 
 export type propinasPk = "ID";
 export type propinasId = propinas[propinasPk];
-export type propinasOptionalAttributes = "ID" | "CreationDate";
+export type propinasOptionalAttributes = "ID" | "CreationDate" | "UpdateDate" | "status";
 export type propinasCreationAttributes = Optional<propinasAttributes, propinasOptionalAttributes>;
 
 export class propinas extends Model<propinasAttributes, propinasCreationAttributes> implements propinasAttributes {
@@ -24,6 +26,8 @@ export class propinas extends Model<propinasAttributes, propinasCreationAttribut
   Montante!: number;
   Referencia!: string;
   CreationDate!: Date;
+  UpdateDate?: Date;
+  status!: number;
 
   // propinas belongsTo matriculas via ID_Matricula
   ID_Matricula_matricula!: matriculas;
@@ -76,6 +80,15 @@ export class propinas extends Model<propinasAttributes, propinasCreationAttribut
       type: DataTypes.DATE,
       allowNull: false,
       defaultValue: Sequelize.Sequelize.fn('current_timestamp')
+    },
+    UpdateDate: {
+      type: DataTypes.DATE,
+      allowNull: true
+    },
+    status: {
+      type: DataTypes.TINYINT.UNSIGNED,
+      allowNull: false,
+      defaultValue: 1
     }
   }, {
     sequelize,

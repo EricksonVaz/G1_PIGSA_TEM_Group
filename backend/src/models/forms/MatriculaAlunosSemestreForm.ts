@@ -3,6 +3,7 @@ import { IFormErrorFeedback } from "../interfaces/IFormErrorFeedback";
 import { Alunos } from "../Alunos";
 import { Cursos } from "../Cursos";
 import { Matriculas } from "../Matriculas";
+import { Propinas } from "../Propinas";
 
 export class MatriculaAlunosSemestreForm {
   private uuidCurso: string = "";
@@ -136,6 +137,17 @@ export class MatriculaAlunosSemestreForm {
     });
 
     if (typeof matriculaCreated == "object" && ("ID" in matriculaCreated)) {
+      const matriculaId = Number((matriculaCreated as any).ID);
+      const propinasList = await this.buildPropinasForSemester(matriculaId, new Date());
+      const propinasCreated = await Propinas.createMany(propinasList);
+      if (!propinasCreated || propinasCreated.length !== propinasList.length) {
+        return {
+          status: 500,
+          message: "Internal Server Error",
+          error: new Error("Nao foi possivel criar propinas"),
+        };
+      }
+
       return {
         status: 201,
         message: "Matricula criada com sucesso",
@@ -148,5 +160,57 @@ export class MatriculaAlunosSemestreForm {
       message: "Internal Server Error",
       error: new Error("Nao foi possivel criar a matricula"),
     };
+  }
+
+  private async buildPropinasForSemester(idMatricula: number, startDate: Date) {
+    const monthNames = ["JAN", "FEV", "MAR", "ABR", "MAI", "JUN", "JUL", "AGO", "SET", "OUT", "NOV", "DEZ"];
+    const list = [];
+
+    for (let i = 0; i < 6; i++) {
+      const dt = new Date(startDate.getFullYear(), startDate.getMonth() + i, 1);
+      const monthName = monthNames[dt.getMonth()];
+      const referencia = `${monthName}/${dt.getFullYear()}`;
+
+      const invoceId = await this.generateUniqueInvoceID();
+      list.push({
+        ID_Matricula: idMatricula,
+        InvoceID: invoceId,
+        Montante: 9000,
+        Referencia: referencia,
+      });
+    }
+
+    return list;
+  }
+
+  private async generateUniqueInvoceID() {
+    let invoceId = "";
+    let tries = 0;
+    while (!invoceId) {
+      tries++;
+      if (tries > 50) {
+        throw new Error("Nao foi possivel gerar InvoceID");
+      }
+
+      const part4a = this.randomDigits(4);
+      const part4b = this.randomDigits(4);
+      const part2 = this.randomDigits(2);
+      const candidate = `#-${part4a}-${part4b}-${part2}`;
+
+      const exists = await Propinas.findByInvoceID(candidate);
+      if (exists.length === 0) {
+        invoceId = candidate;
+      }
+    }
+
+    return invoceId;
+  }
+
+  private randomDigits(len: number) {
+    let out = "";
+    for (let i = 0; i < len; i++) {
+      out += Math.floor(Math.random() * 10).toString();
+    }
+    return out;
   }
 }

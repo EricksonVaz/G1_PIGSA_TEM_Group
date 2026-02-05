@@ -45,6 +45,15 @@ export class Matriculas extends matriculas {
     return rows as matriculasAttributes[];
   }
 
+  static async listCursosByAlunoId(idAluno: number) {
+    const [rows] = await sequelize.query(
+      "SELECT c.UUID AS Uuid, c.Nome, c.Faculdade, c.Grau, c.Semestre, COUNT(m.ID) AS Matriculado FROM `matriculas` m INNER JOIN `cursos` c ON c.ID = m.ID_Curso WHERE m.status = 1 AND c.status = 1 AND m.ID_Aluno = :idAluno GROUP BY c.ID, c.UUID, c.Nome, c.Faculdade, c.Grau, c.Semestre ORDER BY c.Nome ASC;",
+      { replacements: { idAluno } }
+    );
+
+    return rows as any[];
+  }
+
   static async createNew(objToSave: ICreateMatricula) {
     const { ID_Aluno, ID_Curso, Semestre } = objToSave;
 

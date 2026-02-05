@@ -18,6 +18,11 @@ export interface IUpdateAlunoAccess {
   CodigoAcesso?: string;
 }
 
+export interface IUpdateAlunoPassword {
+  UUID: string;
+  Password: string;
+}
+
 export interface IUpdateAlunoContact {
   UUID: string;
   Email: string;
@@ -103,6 +108,23 @@ export class Alunos extends alunos {
       {
         Password,
         CodigoAcesso,
+      },
+      {
+        where: {
+          UUID,
+        },
+      }
+    );
+
+    return resourceUpdated[0];
+  }
+
+  static async updatePassword(objToSave: IUpdateAlunoPassword) {
+    const { UUID, Password } = objToSave;
+
+    let resourceUpdated = await this.modelInstance().update(
+      {
+        Password,
       },
       {
         where: {

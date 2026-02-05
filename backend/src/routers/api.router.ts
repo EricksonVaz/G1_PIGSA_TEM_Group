@@ -5,6 +5,7 @@ import { AlunosController } from "../controllers/AlunosController";
 import { MatriculasController } from "../controllers/MatriculasController";
 import { NotasController } from "../controllers/NotasController";
 import { AuthController } from "../controllers/AuthController";
+import { UserController } from "../controllers/UserController";
 import { authenticateToken } from "../middleware/authenticateToken";
 
 export const apiRouter = Router();
@@ -47,12 +48,14 @@ apiRouter.post("/auth/login", AuthController.loginAlunos);
 
 apiRouter.use(authenticateToken);
 
-// apiRouter.put("/user/update-contact-info", UserController.updateContactInfo);
-// apiRouter.put("/user/update-password", UserController.updatePassword);
+/** Gestão Info User Logado */
+apiRouter.put("/user/update-contact-info", UserController.updateContactInfo);
+apiRouter.put("/user/update-password", UserController.updatePassword);
+apiRouter.get("/user/list-cursos", UserController.listMyCourse);
+apiRouter.get("/user/list-notas/:cursouuid", UserController.listMyNotasPublicadosInCourse);
+apiRouter.get("/user/list-proprinas/:cursouuid", UserController.listMyProprinasInCourse);
+/** FIM Gestão Info User Logado */
 
-// apiRouter.get("/user/list-cursos", LivroController.adicionar);
-// apiRouter.get("/user/list-notas/:curso", LivroController.adicionar);
-// apiRouter.get("/user/list-proprinas/:curso", LivroController.adicionar);
 
 // apiRouter.post("/user/pagamentos/download-recibo", LivroController.adicionar);
 
